@@ -19,13 +19,8 @@ class HiloAdivinador implements Runnable {
         while (!numeroOculto.isJuegoTerminado()) {
             int propuesta = random.nextInt(maxNumero + 1);
             System.out.println(nombre + " intenta con el número: " + propuesta);
-            int resultado = numeroOculto.propuestaNumero(propuesta);
-
-            if (resultado == 1) {
-                System.out.println(nombre + " ha adivinado el número: " + propuesta);
-                break;
-            } else if (resultado == -1) {
-                System.out.println(nombre + " se ha enterado de que el juego ha terminado.");
+            
+            if (numeroOculto.procesarPropuesta(propuesta, nombre) != 0) {
                 break;
             }
         }
